@@ -36,9 +36,6 @@ class HomeScreen extends StatelessWidget {
 
           child: Column(
             children: [
-
-              /// FILTER CARD
-
               Container(
                 margin: const EdgeInsets.all(16),
                 padding: const EdgeInsets.all(16),
@@ -56,9 +53,6 @@ class HomeScreen extends StatelessWidget {
 
                 child: Column(
                   children: [
-
-                    /// SEARCH
-
                     TextField(
                       decoration: InputDecoration(
                         hintText: "Search products",
@@ -76,11 +70,7 @@ class HomeScreen extends StatelessWidget {
                         controller.applyFilters();
                       },
                     ),
-
                     const SizedBox(height: 16),
-
-                    /// CATEGORY FILTER
-
                     DropdownButtonFormField<String>(
                       value: controller
                           .selectedCategory.value
