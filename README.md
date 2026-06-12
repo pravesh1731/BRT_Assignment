@@ -188,4 +188,85 @@ UI Updates Automatically
 * Rating
 * Price
 * Hero Animation
+* 
+
+# Part 2: DSA Questions
+
+## Q1: Two Sum
+
+### Brute Force Approach (O(n²))
+
+```javascript
+function twoSum(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+}
+```
+
+
+### Optimized Approach (O(n))
+
+```javascript
+function twoSum(nums, target) {
+  const map = {};
+
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+
+    if (map.hasOwnProperty(complement)) {
+      return [map[complement], i];
+    }
+
+    map[nums[i]] = i;
+  }
+
+  return [];
+}
+
+// Example
+console.log(twoSum([2, 7, 11, 15], 9));
+// Output: [0, 1]
+```
+
+
+## Q2: Longest Substring Without Repeating Characters
+
+### Optimized Approach (Sliding Window - O(n))
+
+
+```javascript
+function lengthOfLongestSubstring(s) {
+  const map = new Map();
+
+  let left = 0;
+  let maxLength = 0;
+
+  for (let right = 0; right < s.length; right++) {
+    if (
+      map.has(s[right]) &&
+      map.get(s[right]) >= left
+    ) {
+      left = map.get(s[right]) + 1;
+    }
+
+    map.set(s[right], right);
+
+    maxLength = Math.max(
+      maxLength,
+      right - left + 1
+    );
+  }
+
+  return maxLength;
+}
+
+// Example
+console.log(lengthOfLongestSubstring("abcabcbb"));
+// Output: 3
+
 
